@@ -8,27 +8,27 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.suomela.finaali.data.Student;
+import com.suomela.finaali.data.Course;
 
 import java.io.*;
 
 @Service
-public class StudentFileService {
+public class CourseFileService {
     
-    private File file = new File("src/main/java/com/suomela/finaali/service/saves/students.json");
+    private File file = new File("src/main/java/com/suomela/finaali/service/saves/courses.json");
 
     final ObjectMapper mapper = new ObjectMapper();
 
-    public void saveStudents(List<Student> students) throws IOException {
+    public void save(List<Course> courses) throws IOException {
 
         if(!file.exists()) {
             file.createNewFile();
         }
 
-        mapper.writeValue(file, students);
+        mapper.writeValue(file, courses);
     }
 
-    public List<Student> getStudents() throws FileNotFoundException {
+    public List<Course> get() throws FileNotFoundException {
 
         if(!file.exists()) {
             return new ArrayList<>();
@@ -45,9 +45,9 @@ public class StudentFileService {
 
             scanner.close();
 
-            List<Student> studentList = mapper.readValue(line, new TypeReference<List<Student>>(){});
+            List<Course> courseList = mapper.readValue(line, new TypeReference<List<Course>>(){});
 
-            return studentList;
+            return courseList;
 
         }catch(Exception e){
             System.out.println(e);
