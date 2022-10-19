@@ -1,8 +1,10 @@
 package com.suomela.finaali.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.suomela.finaali.data.Student;
@@ -11,6 +13,9 @@ import com.suomela.finaali.data.Student;
 public class StudentService {
     
     private List<Student> students = new ArrayList<>();
+
+    @Autowired
+    StudentFileService studentFileService;
 
     public void add(Student student) {
         students.add(student);
@@ -28,5 +33,23 @@ public class StudentService {
 
     public List<Student> getAll() {
         return students;
+    }
+
+    public List<Student> saveStudents() throws IOException{
+        try{
+            studentFileService.saveStudents(students);
+        }catch(IOException e){
+            throw e;
+        }
+
+        return students;
+    }
+
+    public void fetchStudents() {
+        try {
+            students = studentFileService.getStudents();
+        }catch(IOException e){
+            System.out.println(e);
+        }
     }
 }

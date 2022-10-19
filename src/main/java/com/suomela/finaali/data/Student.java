@@ -8,6 +8,10 @@ public class Student {
     private long id;
     private static long counter = 0;
 
+    public Student () {
+
+    }
+    
     public Student(String firstName, String lastName, int age) {
         this.id = counter++;
         this.firstName = firstName;

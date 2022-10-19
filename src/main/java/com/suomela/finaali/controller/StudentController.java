@@ -1,5 +1,6 @@
 package com.suomela.finaali.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,15 @@ public class StudentController {
         studentService.add(student);
         return student;
     }
-    
+
+    @PostMapping("students/save")
+    public List<Student> saveStudents() throws IOException {
+        return studentService.saveStudents();
+    }
+
+    @GetMapping("students/fetch")
+    public void fetchStudentList() {
+        studentService.fetchStudents();
+    }
+
 }
