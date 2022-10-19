@@ -35,7 +35,6 @@ public class StudentFileService {
         }
 
         try{
-
             Scanner scanner = new Scanner(file);
 
             String line = "";
@@ -49,11 +48,11 @@ public class StudentFileService {
             List<Student> studentList = mapper.readValue(line, new TypeReference<List<Student>>(){});
 
             return studentList;
+
         }catch(Exception e){
             System.out.println(e);
         }
 
         return new ArrayList<>();
     }
-
 }
