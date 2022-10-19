@@ -1,24 +1,29 @@
 package com.suomela.finaali.data;
 
-import java.util.List;
-
 public class Course {
 
     private String name;
+    private String code;
     private String teacher;
     private String classroom;
-    private List<Student> students;
 
     public Course() {
 
     }
 
-    public List<Student> getStudents() {
-        return this.students;
+    public Course(String name, String code, String teacher, String classroom) {
+        this.name = name;
+        this.code = code;
+        this.teacher = teacher;
+        this.classroom = classroom;
     }
 
-    public void setStudents(List<Student> students) {
-        this.students = students;
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {
@@ -44,9 +49,4 @@ public class Course {
     public void setClassroom(String classroom) {
         this.classroom = classroom;
     }
-
-    public String getInfo() {
-        return this.name + " " + this.teacher + " " + this.classroom + " " + this.students;
-    }
-    
 }

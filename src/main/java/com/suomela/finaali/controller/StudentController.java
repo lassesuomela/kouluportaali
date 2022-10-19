@@ -24,21 +24,23 @@ public class StudentController {
         return studentService.getAll();
     }
 
-    @GetMapping("students/{id}")
+    @GetMapping("student/{id}")
     public Student getStudentById(@PathVariable long id) {
         return studentService.getById(id);
     }
 
-    @PostMapping("students")
-    public Student addStudent(@ModelAttribute Student student) throws IOException {
+    @PostMapping("student")
+    public boolean addStudent(@ModelAttribute Student student) throws IOException {
 
-        studentService.add(student);
-        return student;
+        if(student.getFirstName().isEmpty() || student.getLastName().isEmpty() || student.getDob().isEmpty()) {
+            return false;
+        }
+
+        try {
+            studentService.add(student);
+            return true;
+        } catch (IOException e){
+            return false;
+        }
     }
-
-    @GetMapping("students/fetch")
-    public void fetchStudentList() {
-        studentService.fetchStudents();
-    }
-
 }

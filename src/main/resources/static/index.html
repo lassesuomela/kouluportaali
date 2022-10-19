@@ -12,19 +12,19 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center mb-4">School portal</h1>
-        <div class="row">
+        <h1 class="text-center mb-5">School portal</h1>
+        <div class="row mb-5">
             <div class="col-6 border-end border-1">
                 <h2 class="text-center mb-4">Add student</h2>
-                <form method="POST" action="students">
+                <form method="POST" action="student">
                     <div class="row">
                         <div class="col-6 mb-3">
                             <label for="firstname" class="form-label">First name</label>
-                            <input type="text" class="form-control" id="firstname" name="firstName" />
+                            <input type="text" class="form-control" id="firstname" name="firstName" placeholder="e.g. John"/>
                         </div>
                         <div class="col-6 mb-3">
                             <label for="lastname" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="lastname" name="lastName" />
+                            <input type="text" class="form-control" id="lastname" name="lastName" placeholder="e.g. Doe"/>
                         </div>
                     </div>
                     <div class="col-4 mb-3">
@@ -32,36 +32,63 @@
                         <input type="date" class="form-control" id="dob" name="dob" />
                     </div>
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="submit" class="btn btn-success">Add</button>
                     </div>
                 </form>
             </div>
 
             <div class="col-6 border-start border-1">
-                <h2 class="text-center mb-4">Add course</h2>
-                <form method="POST" action="students">
+                <h2 class="text-center mb-4">Create course</h2>
+                <form method="POST" action="course">
                     <div class="row">
                         <div class="col-6 mb-3">
-                            <label for="firstname" class="form-label">First name</label>
-                            <input type="text" class="form-control" id="firstname" name="firstName" />
+                            <label for="name" class="form-label">Course name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="e.g. Java-programming"/>
                         </div>
                         <div class="col-6 mb-3">
-                            <label for="lastname" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="lastname" name="lastName" />
+                            <label for="code" class="form-label">Course code</label>
+                            <input type="text" class="form-control" id="code" name="code" placeholder="e.g. IN00CT05-3003"/>
                         </div>
                     </div>
-                    <div class="col-4 mb-3">
-                        <label for="dob" class="form-label">Date of birth</label>
-                        <input type="date" class="form-control" id="dob" name="dob" />
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label for="teacher" class="form-label">Teacher</label>
+                            <input type="text" class="form-control" id="teacher" name="teacher" placeholder="e.g. John Doe"/>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="classroom" class="form-label">Classroom</label>
+                            <input type="text" class="form-control" id="classroom" name="classroom" placeholder="e.g. 5B318"/>
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="submit" class="btn btn-success">Create</button>
                     </div>
                 </form>
             </div>
         </div>
 
-        
+        <div class="mb-5">
+            <h4>Enroll student</h4>
+            <form method="PUT">
+                <div class="row mb-2">
+                    <div class="col-auto">
+                        <label for="studentList" class="form-label">Student</Student>
+                        <select class="form-select" id="studentList"></select>
+                    </div>
+                    
+                    <div class="col-auto">
+                        <label for="courseList" class="form-label">Course</Student>
+                        <select class="form-select" id="courseList"></select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-primary">Enroll</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
         <div class="md-4">
             <h3>Student list</h3>
@@ -71,10 +98,9 @@
                     <th scope="col">First name</th>
                     <th scope="col">Last name</th>
                     <th scope="col">Date of birth</th>
+                    <th scope="col">Courses</th>
                 </thead>
-                <tbody id="studentTable">
-
-                </tbody>
+                <tbody id="studentTable"></tbody>
             </table>
         </div>
     </div>
