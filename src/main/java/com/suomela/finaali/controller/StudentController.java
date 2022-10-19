@@ -30,15 +30,10 @@ public class StudentController {
     }
 
     @PostMapping("students")
-    public Student addStudent(@RequestBody Student student) {
+    public Student addStudent(@RequestBody Student student) throws IOException {
 
         studentService.add(student);
         return student;
-    }
-
-    @PostMapping("students/save")
-    public List<Student> saveStudents() throws IOException {
-        return studentService.saveStudents();
     }
 
     @GetMapping("students/fetch")

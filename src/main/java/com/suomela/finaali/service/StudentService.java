@@ -17,8 +17,15 @@ public class StudentService {
     @Autowired
     StudentFileService studentFileService;
 
-    public void add(Student student) {
-        students.add(student);
+    public void add(Student student) throws IOException {
+
+        try{
+            students.add(student);
+
+            studentFileService.saveStudents(students);
+        }catch(IOException e){
+            throw e;
+        }
     }
 
     public Student getById(long id) {
@@ -32,16 +39,6 @@ public class StudentService {
     }
 
     public List<Student> getAll() {
-        return students;
-    }
-
-    public List<Student> saveStudents() throws IOException{
-        try{
-            studentFileService.saveStudents(students);
-        }catch(IOException e){
-            throw e;
-        }
-
         return students;
     }
 

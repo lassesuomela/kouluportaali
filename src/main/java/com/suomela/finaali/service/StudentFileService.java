@@ -13,8 +13,8 @@ import java.io.*;
 
 @Service
 public class StudentFileService {
-
-    private File file = new File("G:\\CodingProjects\\Vscode\\java\\oamk\\Finaali\\src\\main\\java\\com\\suomela\\finaali\\service\\saves\\students.json");
+    
+    private File file = new File("src/main/java/com/suomela/finaali/service/saves/students.json");
 
     final ObjectMapper mapper = new ObjectMapper();
 
@@ -28,6 +28,8 @@ public class StudentFileService {
     }
 
     public List<Student> getStudents() throws FileNotFoundException {
+
+        System.out.println(file.getAbsolutePath());
 
         if(!file.exists()) {
             return null;
