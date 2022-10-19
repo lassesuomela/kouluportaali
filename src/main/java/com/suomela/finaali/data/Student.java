@@ -6,25 +6,23 @@ public class Student {
     private String lastName;
     private int age;
     private long id;
-    private static long counter = 0;
 
     public Student () {
 
     }
-    
+
     public Student(String firstName, String lastName, int age) {
-        this.id = counter++;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
     }
 
-    public long getId() {
-        return this.id;
-    }
-
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getId() {
+        return this.id;
     }
 
     public String getFirstName() {

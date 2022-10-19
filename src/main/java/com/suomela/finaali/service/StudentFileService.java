@@ -1,5 +1,6 @@
 package com.suomela.finaali.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -29,8 +30,6 @@ public class StudentFileService {
 
     public List<Student> getStudents() throws FileNotFoundException {
 
-        System.out.println(file.getAbsolutePath());
-
         if(!file.exists()) {
             return null;
         }
@@ -54,7 +53,7 @@ public class StudentFileService {
             System.out.println(e);
         }
 
-        return null;
+        return new ArrayList<>();
     }
 
 }

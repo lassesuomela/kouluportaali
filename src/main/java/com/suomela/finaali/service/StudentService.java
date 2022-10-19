@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import com.suomela.finaali.data.Student;
@@ -15,11 +17,18 @@ public class StudentService {
     private List<Student> students = new ArrayList<>();
 
     @Autowired
-    StudentFileService studentFileService;
+    private StudentFileService studentFileService;
 
     public void add(Student student) throws IOException {
 
         try{
+
+            if(students != null && students.size() > 0){
+    
+                Student lastStudent = students.get(students.size() -1);
+                student.setId(lastStudent.getId() + 1);
+            }
+            
             students.add(student);
 
             studentFileService.saveStudents(students);
@@ -42,9 +51,11 @@ public class StudentService {
         return students;
     }
 
+    @EventListener(ApplicationReadyEvent.class)
     public void fetchStudents() {
         try {
             students = studentFileService.getStudents();
+
         }catch(IOException e){
             System.out.println(e);
         }

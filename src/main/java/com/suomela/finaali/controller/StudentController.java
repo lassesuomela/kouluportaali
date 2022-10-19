@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.suomela.finaali.data.Student;
@@ -30,7 +30,7 @@ public class StudentController {
     }
 
     @PostMapping("students")
-    public Student addStudent(@RequestBody Student student) throws IOException {
+    public Student addStudent(@ModelAttribute Student student) throws IOException {
 
         studentService.add(student);
         return student;
