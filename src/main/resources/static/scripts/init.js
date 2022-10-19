@@ -32,4 +32,24 @@ const getUsers = () => {
     .catch(error => console.error(error));
 };
 
+const getCourses = () => {
+    axios.get(url + "/courses")
+    .then(response => {
+
+        const courseList = document.getElementById("courseList");
+
+        for (let i = 0; i < response.data.length; i++){
+
+            let option = document.createElement("option");
+
+            option.value = response.data[i]["code"];
+            option.innerText = response.data[i]["name"];
+
+            courseList.append(option);
+        }
+    })
+    .catch(error => console.error(error));
+};
+
 getUsers();
+getCourses();
