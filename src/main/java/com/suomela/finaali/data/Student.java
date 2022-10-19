@@ -2,19 +2,19 @@ package com.suomela.finaali.data;
 
 public class Student {
 
+    private long id;
     private String firstName;
     private String lastName;
-    private int age;
-    private long id;
+    private String dob;
 
     public Student () {
 
     }
 
-    public Student(String firstName, String lastName, int age) {
+    public Student(String firstName, String lastName, String dob) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = age;
+        this.dob = dob;
     }
 
     public void setId(long id) {
@@ -41,11 +41,11 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public int getAge() {
-        return this.age;
+    public String getDob() {
+        return this.dob;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 }
