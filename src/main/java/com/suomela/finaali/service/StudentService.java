@@ -9,6 +9,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import com.suomela.finaali.data.Course;
 import com.suomela.finaali.data.Student;
 
 @Service
@@ -45,6 +46,19 @@ public class StudentService {
         }
 
         return null;
+    }
+
+    public void addCourse(Student student, Course course) throws IOException {
+
+        int index = students.indexOf(student);
+
+        List<Course> currentCourses = student.getCourses();
+
+        currentCourses.add(course);
+
+        students.get(index).setCourses(currentCourses);
+
+        studentFileService.saveStudents(students);
     }
 
     public List<Student> getAll() {

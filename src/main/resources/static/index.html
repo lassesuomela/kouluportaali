@@ -69,16 +69,16 @@
 
         <div class="mb-5">
             <h4>Enroll student</h4>
-            <form method="PUT">
+            <form method="POST" action="student/enroll">
                 <div class="row mb-2">
                     <div class="col-auto">
                         <label for="studentList" class="form-label">Student</Student>
-                        <select class="form-select" id="studentList"></select>
+                        <select class="form-select" id="studentList" name="student"></select>
                     </div>
                     
                     <div class="col-auto">
                         <label for="courseList" class="form-label">Course</Student>
-                        <select class="form-select" id="courseList"></select>
+                        <select class="form-select" id="courseList" name="course"></select>
                     </div>
                 </div>
 

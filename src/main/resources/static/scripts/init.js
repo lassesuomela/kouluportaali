@@ -22,7 +22,22 @@ const getUsers = () => {
 
                 let newCell = newRow.insertCell();
     
-                let newText = document.createTextNode(response.data[i][key]);
+                let newText;
+                if(key !== "courses"){
+                    newText = document.createTextNode(response.data[i][key]);
+                }else{
+
+                    let courseNames = "";
+                    for(let j = 0; j < response.data[i][key].length; j++){
+                        const courseData = response.data[i][key][j];
+
+                        courseNames += courseData["name"]
+                        
+                        response.data[i][key].length > 1 && j !== response.data[i][key].length -1 ? courseNames += ", " : ""
+                    }
+
+                    newText = document.createTextNode(courseNames);
+                }
                 newCell.appendChild(newText);
             }
         }

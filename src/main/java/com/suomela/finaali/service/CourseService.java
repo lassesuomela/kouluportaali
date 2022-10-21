@@ -34,6 +34,17 @@ public class CourseService {
         return courses;
     }
 
+    public Course getCourseByCode(String code){
+        for (Course course : courses) {
+
+            if(course.getCode().equals(code)){
+                return course;
+            }
+        }
+
+        return null;
+    }
+
     @EventListener(ApplicationReadyEvent.class)
     public void fetchCourses() {
         try {

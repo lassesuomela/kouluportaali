@@ -16,7 +16,7 @@ import com.suomela.finaali.service.CourseService;
 public class CourseController {
 
     @Autowired
-    CourseService courseService;
+    private CourseService courseService;
 
     @GetMapping("courses")
     public List<Course> getCourseList() {

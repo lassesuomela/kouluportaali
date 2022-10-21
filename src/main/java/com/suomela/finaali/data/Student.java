@@ -1,11 +1,16 @@
 package com.suomela.finaali.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Student {
 
     private long id;
     private String firstName;
     private String lastName;
     private String dob;
+
+    private List<Course> courses = new ArrayList<Course>();
 
     public Student () {
 
@@ -15,6 +20,14 @@ public class Student {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
+    }
+
+    public List<Course> getCourses() {
+        return this.courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
     public void setId(long id) {
