@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -57,22 +56,29 @@ public class StudentController {
         Student currentStudent = studentService.getById(student);
 
         if(currentStudent == null){
-            return "Error current student is null";
+            return "Error: Student is null";
         }
 
-        System.out.println("Cheking with code =" + course);
         Course newCourse = courseService.getCourseByCode(course);
 
         if(newCourse == null){
-            return "Error current course is null";
+            return "Error: Course is null";
+        }
+
+        System.out.println(newCourse.getName());
+
+        for(Course c : currentStudent.getCourses()){
+            if(c.getName().equals(newCourse.getName())){
+                return "Error: Duplicate course";
+            }
         }
 
         try {
             studentService.addCourse(currentStudent, newCourse);
-            return "Done";
+            return "Success";
 
         }catch (IOException e){
-            return "Error occured " + e;
+            return "Error: " + e;
         }
     }
 }
