@@ -21,6 +21,7 @@ public class CourseService {
 
     public void add(Course course) throws IOException {
 
+        // try to add course object to courses list and save courses to file
         try{
             courses.add(course);
 
@@ -35,6 +36,9 @@ public class CourseService {
     }
 
     public Course getCourseByCode(String code){
+        // loop through courses and check if there is a match for the code
+        // providded, if there is return that object else return null
+
         for (Course course : courses) {
 
             if(course.getCode().equals(code)){
@@ -45,6 +49,8 @@ public class CourseService {
         return null;
     }
 
+    // at the start of the program fetch all courses from the file and
+    // assign them to courses list
     @EventListener(ApplicationReadyEvent.class)
     public void fetchCourses() {
         try {

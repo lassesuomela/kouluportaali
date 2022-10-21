@@ -38,6 +38,7 @@ public class StudentController {
     @PostMapping("student")
     public boolean addStudent(@ModelAttribute Student student) throws IOException {
 
+        // check if some values are missing before proceeding
         if(student.getFirstName().isEmpty() || student.getLastName().isEmpty() || student.getDob().isEmpty()) {
             return false;
         }
@@ -53,20 +54,23 @@ public class StudentController {
     @PostMapping("student/enroll")
     public String enrollStudent(@RequestParam long student, @RequestParam String course) {
 
+        // get student object by using student id from the user
         Student currentStudent = studentService.getById(student);
 
         if(currentStudent == null){
             return "Error: Student is null";
         }
 
+        // get course object by using course code from the user
         Course newCourse = courseService.getCourseByCode(course);
 
         if(newCourse == null){
             return "Error: Course is null";
         }
 
-        System.out.println(newCourse.getName());
 
+        // loop through students courses and check if previously fetched course matches one of them
+        // if there is a match then return error msg
         for(Course c : currentStudent.getCourses()){
             if(c.getName().equals(newCourse.getName())){
                 return "Error: Duplicate course";

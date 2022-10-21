@@ -26,6 +26,7 @@ public class CourseController {
     @PostMapping("course")
     public boolean addCourse(@ModelAttribute Course course) throws IOException {
 
+        // check if some values are missing before proceeding
         if(course.getCode().isEmpty() || course.getName().isEmpty() || course.getTeacher().isEmpty() || course.getClassroom().isEmpty()) {
             return false;
         }

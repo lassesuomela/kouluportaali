@@ -21,20 +21,24 @@ public class StudentFileService {
 
     public void saveStudents(List<Student> students) throws IOException {
 
+        // if file doesnt exists then create new file
         if(!file.exists()) {
             file.createNewFile();
         }
 
+        // use object mapper to write student list to the file defined at the start 
         mapper.writeValue(file, students);
     }
 
     public List<Student> getStudents() throws FileNotFoundException {
 
+        // if file doesnt exists then return empty list
         if(!file.exists()) {
             return new ArrayList<>();
         }
 
         try{
+            // use scanner to read the file and add the text to the line var
             Scanner scanner = new Scanner(file);
 
             String line = "";
@@ -45,6 +49,7 @@ public class StudentFileService {
 
             scanner.close();
 
+            // use the line var and object mapper to create studentlist from the file
             List<Student> studentList = mapper.readValue(line, new TypeReference<List<Student>>(){});
 
             return studentList;

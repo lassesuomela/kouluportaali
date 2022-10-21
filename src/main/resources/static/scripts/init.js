@@ -7,6 +7,13 @@ const getUsers = () => {
         const studentTable = document.getElementById("studentTable");
         const studentList = document.getElementById("studentList");
 
+        // loop through the students
+        // create option and assign students id to option value
+        // and assign students name to option text
+
+        // also create row for every object in the student array
+        // and then create new cells in the same row and 
+        // set those cells values equal to the student id, name, dob and courses
         for (let i = 0; i < response.data.length; i++){
 
             let option = document.createElement("option");
@@ -33,6 +40,7 @@ const getUsers = () => {
 
                         courseNames += courseData["name"]
                         
+                        // check if there is a need to add ", " to the end of courses
                         response.data[i][key].length > 1 && j !== response.data[i][key].length -1 ? courseNames += ", " : ""
                     }
 
@@ -53,6 +61,10 @@ const getCourses = () => {
 
         const courseList = document.getElementById("courseList");
 
+        // loop through the courses array
+        // and get the course code and course name
+        // assign those to the option that is created and assign
+        // options value to course code 
         for (let i = 0; i < response.data.length; i++){
 
             let option = document.createElement("option");
