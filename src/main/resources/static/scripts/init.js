@@ -59,12 +59,16 @@ const getCourses = () => {
     axios.get(url + "/courses")
     .then(response => {
 
+        const courseTable = document.getElementById("courseTable");
         const courseList = document.getElementById("courseList");
 
         // loop through the courses array
         // and get the course code and course name
         // assign those to the option that is created and assign
         // options value to course code 
+
+        // also create new row and cells and assing course data to those
+        // and show it in the course table
         for (let i = 0; i < response.data.length; i++){
 
             let option = document.createElement("option");
@@ -73,6 +77,17 @@ const getCourses = () => {
             option.innerText = response.data[i]["name"];
 
             courseList.append(option);
+
+            let newRow = courseTable.insertRow();
+
+            for(const key in response.data[0]){
+
+                let newCell = newRow.insertCell();
+    
+                let newText = document.createTextNode(response.data[i][key]);
+
+                newCell.appendChild(newText);
+            }
         }
     })
     .catch(error => console.error(error));
